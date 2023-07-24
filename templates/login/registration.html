@@ -1,0 +1,131 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} 
+{% block title %} Create New Account {% endblock %}
+
+ {% block body %}
+
+
+
+
+ <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="{% url 'Login:registration' %}">
+  {% csrf_token %}
+  <h2>Registration Form</h2>
+  {% if error_message %}
+            <div class="alert alert-danger">{{ error_message }}</div>
+  {% endif %}
+  <div class="form-group">
+      <label for="firstName" class="col-sm-3 control-label">Full Name</label>
+      <div class="col-sm-9">
+          <input type="text" name="firstName" placeholder="Full Name" class="form-control" autofocus>
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="email" class="col-sm-3 control-label">Email</label>
+      <div class="col-sm-9">
+          <input type="email" name="email" placeholder="Email" class="form-control">
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="password" class="col-sm-3 control-label">Password</label>
+    <div class="col-sm-9">
+        <input type="password" name="password" placeholder="Password" class="form-control">
+    </div>
+</div>
+<div class="form-group">
+      <label for="country" class="col-sm-3 control-label">Country</label>
+      <div class="col-sm-9">
+          <input type="country" name="country" placeholder="Country" class="form-control">
+      </div>
+  </div>
+<div class="form-group">
+  <label for="address" class="col-sm-3 control-label">Address</label>
+  <div class="col-sm-9">
+      <input type="address" name="address" placeholder="Address" class="form-control">
+  </div>
+</div>
+  <div class="form-group">
+    <label for="phone" class="col-sm-3 control-label">Phone</label>
+    <div class="col-sm-9">
+      <input type="phone" name="phone" placeholder="Phone" class="form-control">
+    </div>
+</div>
+  <div class="form-group">
+      <label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
+      <div class="col-sm-9">
+          <input type="date" name="birth_date" class="form-control">
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="university" class="col-sm-3 control-label">University</label>
+    <div class="col-sm-9">
+        <input type="text" name="university" placeholder="University Name" class="form-control" autofocus>
+    </div>
+</div>
+<div class="form-group">
+  <label for="github" class="col-sm-3 control-label">GitHub Account</label>
+  <div class="col-sm-9">
+      <input type="text" name="github" placeholder="https://github.com/engnraminul" class="form-control" autofocus>
+  </div>
+</div>
+  <div class="form-group">
+      <label for="Gender" class="col-sm-3 control-label">Gender</label>
+      <div class="col-sm-9">
+          <select name="Gender" class="form-control">
+              <option>Male</option>
+              <option>Female</option>
+              <option>Hijra</option>
+          </select>
+      </div>
+  </div> <!-- /.form-group -->
+<div class="form-group">
+  <label for="github" class="col-sm-3 control-label">Profile</label>
+  <div class="col-sm-9">
+    <input type="file"  name="profile_picture" class="form-control-file" >
+  </div>
+    
+</div>
+  
+  <div class="form-group">
+      <div class="col-sm-9 col-sm-offset-3 mt-3">
+          <button type="submit" class="btn btn-primary btn-block">Register</button>
+      </div>
+  </div>
+</form> <!-- /form -->
+
+<style>
+  .sidebar-card-title{
+       font-size: 15px;
+  }
+  #more {display: none;}
+
+  .breadcrumb {
+       font-size: 0.8rem;
+  }
+  
+</style>
+  <style>
+      body {
+        background-color: #eee;
+    }
+    
+    *[role="form"] {
+        max-width: 530px;
+        padding: 15px;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 0.3em;
+    }
+    
+    *[role="form"] h2 {
+        margin-left: 5em;
+        margin-bottom: 1em;
+    }
+    
+    {% comment %} phone number {% endcomment %}
+    
+    
+
+  </style>  
+
+  <script>
+  </script>
+{% endblock %}

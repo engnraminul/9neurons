@@ -4,8 +4,13 @@ from django.urls import path, include
 #show media files
 from django.conf import settings
 from django.contrib. staticfiles.urls import static
+
+from Main import views
+app_name = 'Main'
 urlpatterns = [
+    path('', views.home, name="home"),
     path('admin/', admin.site.urls),
+    path('account/', include('Login.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
