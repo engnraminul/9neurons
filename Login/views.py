@@ -66,9 +66,9 @@ def user_login(request):
     return render(request, 'Login/login.html')
 
 
-
+@login_required
 def profile(request):
-    profile = User.objects.all()
+    profile = request.user
     return render(request, 'Login/profile.html', {'profile': profile})
 
 

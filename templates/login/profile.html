@@ -1,5 +1,10 @@
-<h1>
-{% for profile in profile %}
-{{profile.full_name}}
-{% endfor %}
-</h1>
+{% extends 'base.html' %}
+{% block body %} 
+<img src="{{profile.profile_picture.url}}" class="align-middle" style="width: 100px" alt="">
+<h2>Name: {{profile.full_name}}</h2>
+<h2>Email: {{profile.email}}</h2>
+<h2>University: {{profile.university}}</h2>
+{% endblock %}
+
+
+
