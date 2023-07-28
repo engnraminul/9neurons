@@ -52,10 +52,23 @@ def registration(request):
 from django.contrib.auth.views import LoginView
 
 
+def user_login(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(email=email, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Your are login successfully")
+            return HttpResponseRedirect(reverse('home'))
+        else:
+            messages.error(request, "Iccorect email or password. Please try again.")
+    return render(request, 'Login/login.html')
+
 
 
 def profile(request):
-    profile = User.objects.get(user=request.user)
+    profile = User.objects.all()
     return render(request, 'Login/profile.html', {'profile': profile})
 
 
