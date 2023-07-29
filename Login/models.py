@@ -59,6 +59,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
     verification_token = models.CharField(max_length=256, blank=True, null=True)
+    email_verify = models.BooleanField(default=False)
 
     
 
