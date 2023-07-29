@@ -9,6 +9,7 @@ from django.utils.translation import gettext_lazy
 
 
 
+
 class MyUserManager(BaseUserManager):
     #custom login with email
     def _create_user(self, email, password, **extra_fields):
@@ -57,6 +58,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     birth_date = models.DateField(null=True, blank=True)
     profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    verification_token = models.CharField(max_length=256, blank=True, null=True)
+
+    
+
 
     is_staff = models.BooleanField(
         gettext_lazy('staff Status'),
