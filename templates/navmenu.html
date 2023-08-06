@@ -5,6 +5,7 @@
     <a class="navbar-brand" href="/">Home</a>
     
     {% if user.is_authenticated %}
+    <a class="navbar-brand" href="{% url 'Login:profile' %}">Profile</a>
     <a class="navbar-brand" href="{% url 'Login:logout' %}">Logout</a>
     {% else %}
     <a class="navbar-brand" href="{% url 'Login:login' %}">Login</a>
