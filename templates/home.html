@@ -1,8 +1,11 @@
 {% extends 'base.html' %} 
  {% block title %} Home{% endblock %}
- {% block body %}
+ {% block body %}  
+ <div class="bg-light">  
 <h2>9neurons</h2>
 
 <br />
 <p>Doesn't have an account?</p>
-<a href="{% url 'Login:registration' %}">SignUp</a> {% endblock %}
+<a href="{% url 'Login:registration' %}">SignUp</a> 
+ </div>
+{% endblock %}
