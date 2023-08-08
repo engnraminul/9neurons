@@ -7,14 +7,12 @@ class Category(models.Model):
     created_at = models.DateField(auto_now_add=True)
     slug = models.SlugField(max_length=250, unique=True, blank=True)
 
-    class Meta:
-        ordering = ['publish_date']
 
     def __str__(self):
-        return self.title
+        return self.name
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        self.slug = slugify(self.name)
         super(Category, self).save(*args, **kwargs)
     
 
@@ -23,7 +21,7 @@ class Model(models.Model):
     title = models.CharField(max_length=200)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     content = models.TextField(blank=False, null=False)
-    publish_date = models.DateField(auto_now_add=False)
+    publish_date = models.DateField(auto_now_add=True)
     update_date = models.DateField(auto_now=True)
     slug = models.SlugField(max_length=250, unique=True, blank=True)
 
@@ -38,3 +36,6 @@ class Model(models.Model):
         super(Model, self).save(*args, **kwargs)
     
 
+class Files(models.Model):
+    model_name = models.ForeignKey(Model, on_delete=models.CASCADE)
+    file = models.FileField(upload_to= 'files', null=True, blank=True)

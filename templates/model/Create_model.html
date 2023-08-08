@@ -1,0 +1,49 @@
+{% extends 'base.html' %} 
+{% block title %} Models{% endblock %}
+{% block body %}
+<h2>Create a new model</h2>
+
+<form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+    {% csrf_token %}
+    
+    <div class="mb-3">
+      <label for="{{ form.title.id_for_label }}" class="form-label">{{ form.title.label }}</label>
+      {{ form.title }}
+      <div class="invalid-feedback">Please provide a title.</div>
+    </div>
+    <div class="mb-3">
+      <label for="{{ form.category.id_for_label }}" class="form-label">{{ form.category.label }}</label>
+      {{ form.category }}
+      <div class="invalid-feedback">Please select a category.</div>
+    </div>
+    <div class="mb-3">
+      <label for="{{ form.content.id_for_label }}" class="form-label">{{ form.content.label }}</label>
+      {{ form.content }}
+      <div class="invalid-feedback">Please provide content.</div>
+    </div>
+    
+    <div id="file-fields" class="mb-3">
+      <label for="file" class="form-label">Upload Files:</label>
+      <input type="file" name="file" class="form-control-file file-input" multiple>
+    </div>
+    
+    <button type="button" id="add-file-field" class="btn btn-secondary mb-3">Add File Field</button>
+    <button type="submit" class="btn btn-primary">Create Model</button>
+  </form>
+</div>
+
+<script>
+  const fileFieldsContainer = document.getElementById('file-fields');
+  const addFileFieldButton = document.getElementById('add-file-field');
+
+  addFileFieldButton.addEventListener('click', () => {
+    const newFileInput = document.createElement('input');
+    newFileInput.type = 'file';
+    newFileInput.name = 'file';
+    newFileInput.className = 'form-control-file file-input';
+    newFileInput.setAttribute('multiple', 'true');
+    fileFieldsContainer.appendChild(newFileInput);
+  });
+</script>
+
+{% endblock %}

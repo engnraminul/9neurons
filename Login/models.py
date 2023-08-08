@@ -47,6 +47,11 @@ class User(AbstractBaseUser, PermissionsMixin):
         ('Female', 'Female'),
         ('Transgender', 'Transgender'),
     )
+    USERTYPE_CHOICES = (
+        ('Visitor', 'Visitor'),
+        ('Member', 'Member'),
+        ('Premium Member', 'Premium Member'),
+    )
     email = models.EmailField(unique=True, null=False)
     full_name = models.CharField(max_length=150, null=True, blank=True)
     country = models.CharField(max_length=200, null=True, blank=True)
@@ -58,6 +63,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     birth_date = models.DateField(null=True, blank=True)
     profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    user_type = models.CharField(max_length=50, choices=USERTYPE_CHOICES, default="Visitor")
     verification_token = models.CharField(max_length=256, blank=True, null=True)
     email_verify = models.BooleanField(default=False)
 
