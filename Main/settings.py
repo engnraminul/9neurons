@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     "Login",
     "Models",
+    "ckeditor",
     
 ]
 
@@ -150,3 +151,22 @@ EMAIL_FROM = 'info.aminul3065@gmail.com'
 EMAIL_HOST_USER = 'info.aminul3065@gmail.com'  # Replace with your Gmail address
 EMAIL_HOST_PASSWORD = 'zfryanvmktwrgprj'  # Replace with your Gmail password or app-specific password
 DEFAULT_FROM_EMAIL = 'Verify Team <9neurons>'
+
+#Ckeditor upload path
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+# CKeditor Customization
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moono',
+        'codeSnippet_theme': 'monokai',
+        'toolbar': 'full',
+        'extraplugins': ', '.join(
+            [
+                'codesnippet',
+                'widget',
+                'dialog'
+            ]
+        )
+    },
+}

@@ -12,6 +12,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('Login.urls')),
     path('models/', include('Models.urls')),
+    path('ckeditor/', include("ckeditor_uploader.urls"))
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
