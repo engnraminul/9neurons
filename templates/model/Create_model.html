@@ -1,12 +1,16 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %} {% load static %}
 {% block title %} Models{% endblock %}
+{% block head %} 
+<script src="{% static 'ckeditor/ckeditor.js' %}"></script>
+{% endblock %}
 {% block body %}
-<h2>Create a new model</h2>
 
-<form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+<h2 class="mb-1 text-center border bg-light">Create a New Model</h2>
+<div class="container mt-2 pt-3 pb-10 border bg-light">
+  <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
     {% csrf_token %}
     
-    <div class="mb-3">
+    <div class="mb-3 d-grid">
       <label for="{{ form.title.id_for_label }}" class="form-label">{{ form.title.label }}</label>
       {{ form.title }}
       <div class="invalid-feedback">Please provide a title.</div>
@@ -14,11 +18,11 @@
     <div class="mb-3">
       <label for="{{ form.category.id_for_label }}" class="form-label">{{ form.category.label }}</label>
       {{ form.category }}
-      <div class="invalid-feedback">Please select a category.</div>
+      <div class="invalid-feedback form-control">Please select a category.</div>
     </div>
     <div class="mb-3">
       <label for="{{ form.content.id_for_label }}" class="form-label">{{ form.content.label }}</label>
-      {{ form.content }}
+      {{form.media}}{{ form.content }}
       <div class="invalid-feedback">Please provide content.</div>
     </div>
     
@@ -26,13 +30,22 @@
       <label for="file" class="form-label">Upload Files:</label>
       <input type="file" name="file" class="form-control-file file-input" multiple>
     </div>
-    
-    <button type="button" id="add-file-field" class="btn btn-secondary mb-3">Add File Field</button>
-    <button type="submit" class="btn btn-primary">Create Model</button>
+    <div>
+    <button type="button" id="add-file-field" class="btn btn-outline-info mb-3">Add File Field</button>
+    </div>
+    <div class="d-grid pb-4">
+    <button type="submit" class="btn btn-outline-success">Submit</button>
+    </div>
   </form>
 </div>
 
-<script>
+{% comment %} <script>
+  CKEDITOR.replace('editor');
+</script> {% endcomment %}
+
+
+ <script>
+  
   const fileFieldsContainer = document.getElementById('file-fields');
   const addFileFieldButton = document.getElementById('add-file-field');
 

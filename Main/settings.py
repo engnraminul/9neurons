@@ -158,10 +158,11 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 # CKeditor Customization
 CKEDITOR_CONFIGS = {
     'default': {
+        'width': '100%',
         'skin': 'moono',
         'codeSnippet_theme': 'monokai',
         'toolbar': 'full',
-        'extraplugins': ', '.join(
+        'extraPlugins': ','.join(
             [
                 'codesnippet',
                 'widget',

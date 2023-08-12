@@ -1,5 +1,6 @@
 from django import forms
 from .models import Model, Files
+from ckeditor.widgets import CKEditorWidget
 
 class ModelFilesForm(forms.ModelForm):
     file = forms.FileField(required=False)  # Custom form field for the file
@@ -8,7 +9,7 @@ class ModelFilesForm(forms.ModelForm):
         model = Model
         fields = ['title', 'category', 'content']
 
-# class ModelForm(forms.ModelForm):
-#     class Meta:
-#         model = Model
-#         fields = ['title', 'category', 'content',]
+class ModelForm(forms.ModelForm):
+    class Meta:
+        model = Model
+        fields = ['title', 'category', 'content',]

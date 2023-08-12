@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Model, Files
-from Models.Forms import ModelFilesForm
+from Models.Forms import ModelForm, ModelFilesForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -9,7 +9,7 @@ from django.urls import reverse
 # def create_model(request):
 #     if request.user.user_type in ['Member', 'Premium Member']:
 #         if request.method == 'POST':
-#             form = ModelForm(request.POST)
+#             form = ModelFilesForm(request.POST)
 #             if form.is_valid():
 #                 model = form.save(commit=False)
 #                 model.author = request.user
