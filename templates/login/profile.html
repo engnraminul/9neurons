@@ -1,115 +1,71 @@
 {% extends 'base.html' %}
+{% block title %}{{profile.full_name}}'s profiles' {% endblock %}
 {% block body %} 
-<section style="background-color: #eee;">
-    <div class="container py-5">
-      <div class="row">
-        <div class="col">
-          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-            <ol class="breadcrumb mb-0">
-              <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-            </ol>
-          </nav>
-        </div>
-      </div>
   
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="card mb-4">
-            <div class="card-body text-center">
-              <img src="{{profile.profile_picture.url}}" alt="avatar"
-                class="rounded-circle img-fluid" style="width: 150px;">
-              <h5 class="my-3">{{profile.full_name}}</h5>
-              <p class="text-muted mb-4">{{profile.country}}</p>
-              <p class="badge bg-info text-dark">Admin</p>
-              <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-primary">Follow</button>
-                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
-              </div>
-            </div>
-          </div>
-          <div class="card mb-4 mb-lg-0">
-            <div class="card-body p-0">
-              <ul class="list-group list-group-flush rounded-3">
-                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                  <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                  <p class="mb-0">{{profile.github}}</p>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                  <i class="fa-solid fa-phone" style="color: #55acee;"></i>
-                  <p class="mb-0">{{profile.phone}}</p>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                  <i class="fa-regular fa-envelope" style="color: #ac2bac;"></i>
-                  <p class="mb-0">{{profile.email}}</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-8">
-          <div class="card mb-4">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Full Name</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">{{profile.full_name}}</p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Gender</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">{{profile.gender}}</p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Birth Date</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">{{profile.birth_date}}</p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">University</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">{{profile.university}}</p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Address</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">{{profile.address}}, {{profile.country}}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card mb-4 mb-md-0">
-                <div class="card-body">
-                  
-            
-            </div>
-          </div>
-        </div>
+  <div class="m-2">
+    <nav aria-label="breadcrumb" class="">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Profile</li>
+      </ol>
+    </nav>
+  </div>
+  <div> 
+    <h3 class="text-center border-bottom border-danger border-3">{{profile.full_name}}'s Profile</h3>
+  </div>
+  <div class="row m-2">
+    <div class="col-md-4 col-lg-4 col-sm-12 bg-light rounded-start border border-warning-subtle text-center">
+      <div class="p-2">
+        <img style="width: 200px; height: 200px;" src="{{ profile.profile_picture.url }}" class="img-thumbnail" alt="...">
+      </div>
+      <div>
+        <p class="border rounded">{{profile.full_name}}</p>
+        <p class="badge text-bg-info">{{profile.user_type}}</p>
+        <br>
+        <a class="btn btn-outline-danger btn-sm mb-2" href="{% url 'Login:logout' %}">Logout</a>
+        <a class="btn btn-outline-success btn-sm mb-2" href="{% url 'Models:create_model' %}">Create Models</a>
       </div>
     </div>
-  </section>
+    <div class="col-md-8 col-lg-8 col-sm-12 bg-light rounded-end border border-warning-subtle">
+      <table class="table table-light">
+        
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>{{ profile.full_name }}</td>
+          </tr>
+          <tr>
+            <td>Gender</td>
+            <td>{{ profile.gender }}</td>
+          </tr>
+          <tr>
+            <td>Birth Date</td>
+            <td>{{ profile.birth_date }}</td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>{{ profile.address }}</td>
+          </tr>
+          <tr>
+            <td>University</td>
+            <td>{{ profile.university }}</td>
+          </tr>
+          <tr>
+            <td>Github</td>
+            <td>{{ profile.github }}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{{ profile.email }}</td>
+          </tr>
+         
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-  <a href="{% url 'Models:create_model' %}">Create Model</a>
+
+  
 {% endblock %}
 
 

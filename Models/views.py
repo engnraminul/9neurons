@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Model, Files
+from .models import *
 from Models.Forms import ModelForm, ModelFilesForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
