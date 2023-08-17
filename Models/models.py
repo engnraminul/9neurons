@@ -60,3 +60,4 @@ class Model(models.Model):
 class Files(models.Model):
     model_name = models.ForeignKey(Model, on_delete=models.CASCADE)
     file = models.FileField(upload_to= 'files', null=True, blank=True)
+

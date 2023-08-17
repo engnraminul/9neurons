@@ -1,5 +1,5 @@
 from django import forms
-from .models import Model, Files, Category, Sub_Category
+from .models import Model, Files, Category
 from ckeditor.widgets import CKEditorWidget
 
 class ModelFilesForm(forms.ModelForm):
@@ -7,9 +7,9 @@ class ModelFilesForm(forms.ModelForm):
     
     class Meta:
         model = Model
-        fields = ['title', 'category', 'sub_category', 'content',]
+        fields = ['title', 'category', 'content',]
 
 class ModelForm(forms.ModelForm):
     class Meta:
         model = Model
-        fields = ['title', 'category', 'sub_category', 'content',]
+        fields = ['title', 'category', 'content',]
