@@ -45,3 +45,14 @@ def create_model(request):
     else:
         return render(request, 'permission_denied.html')
 
+
+
+def models_list(request):
+    models = Model.objects.all()
+    category = Category.objects.all()
+    context = {
+        'models': models,
+        'category': category,
+    }
+
+    return render(request, 'model/models.html', context)

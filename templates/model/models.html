@@ -1,6 +1,40 @@
-{% extends 'base.html' %} {% load static %}
-{% block title %} Models{% endblock %}
-{% block head %} {% endblock %}
-{% block body %}
+{% extends 'base.html' %}
+{% block title %}{{profile.full_name}}'s profiles' {% endblock %}
+{% block body %} 
+  
+{% comment %} breadcrumb {% endcomment %}
+  <div class="m-2">
+    <nav aria-label="breadcrumb" class="">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Models</li>
+      </ol>
+    </nav>
+  </div>
+  {% comment %} End breadcrumb {% endcomment %}
 
+  <div class="row m-2">
+    {% comment %} left sidebar {% endcomment %}
+    <div class="col-md-3 col-lg-3 col-sm-12 bg-light rounded-start border border-warning-subtle">
+      {% for category in category %}
+        <h5 class='border'>{{category.name}}</h5>
+        {% for sub_category in category.sub_category_set.all %}
+         <a class="border rounded border-primary hover" style= "text-decoration: none; margin-button: 2px;" href="">{{sub_category.name}}</a>
+        {% endfor %}
+      {% endfor %}
+    </div>
+    {% comment %} end left sidebar {% endcomment %}
+
+    {% comment %} Models List {% endcomment %}
+    <div class="col-md-9 col-lg-9 col-sm-12 bg-light rounded-end border border-warning-subtle">
+      adad
+    </div>
+    {% comment %} end models list {% endcomment %}
+  </div>
+
+
+  
 {% endblock %}
+
+
+
